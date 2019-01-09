@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import QuestionCard from "./QuestionCard";
-import { Questions } from "./Questions";
+import { Questions } from "./Data/Questions";
 
 class App extends Component {
   constructor() {
@@ -21,6 +21,7 @@ class App extends Component {
     }
   };
 
+ //function for next prev button (decrease qn in state)
   prevQuestion = () => {
     let qn = this.state.qn;
 
@@ -28,6 +29,12 @@ class App extends Component {
       this.setState({ qn: --qn });
     }
   };
+
+  //onsubmit func check ans in answer files
+  submitAnswer = (event) => {
+         console.log(event + "check") 
+        
+  }
 
   render() {
     return (
@@ -38,6 +45,7 @@ class App extends Component {
             qn={this.state.qn}
             onNext={this.nextQuestion}
             onPrev={this.prevQuestion}
+            Submit = {this.submitAnswer}
           />
         </div>
       </div>
