@@ -31,15 +31,19 @@ class App extends Component {
   render() {
     return (
       <div className="App   ">
+        <h2 className="mt0 mb0 fw3 tc pt3 f2 mid-gray">QUIZ</h2>
+
         <div className="card-space">
         </div>
-        <div className="card shadow-5 bg-white flex tc  ma3 mt0">
+        <div className="card shadow-5 bg-white flex   ma3 mt0">
           <QuestionCard
             qn={this.state.qn}
             onNext={this.nextQuestion}
             onPrev={this.prevQuestion}
           />
         </div>
+
+       
       </div>
     );
   }

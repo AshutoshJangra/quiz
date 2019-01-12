@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Checkbox from "./Checkbox";
+import './App.css';
 import { Questions } from "./Data/Questions";
 import { Answers } from "./Data/Answers";
-
+import icon from "./icons8-ok-30.png";
 
 class QuestionCard extends Component {
   constructor(props) {
@@ -38,23 +39,20 @@ class QuestionCard extends Component {
       .filter(checkbox => this.state.checkboxes[checkbox])
       .forEach(checkbox => {
         //check if ans is right
-        if(checkbox === null){
-          console.log("sdds")
+        if (checkbox === null) {
+          console.log("sdds");
         }
         if (checkbox === Answers[this.props.qn]) {
-          console.log("rigth")
-          this.setState({isright : true})
+          this.setState({ isright: true });
         } else {
           console.log("Answer is wrong");
-        
-          this.setState({isright : false})
+
+          this.setState({ isright: false });
         }
       });
 
-      //set the state to default false
-      
+    //set the state to default false
   };
-
 
   //creating the checkbox
   createCheckbox = option => (
@@ -74,10 +72,11 @@ class QuestionCard extends Component {
         <div className="row mt-5">
           <div className="col-sm-12">
             <form onSubmit={this.handleFormSubmit}>
-
               {/*display questions */}
-              <div className="ques  f3 tc ">
-                <h4 className="mt0 pt3 pl2 mb3">{Questions[this.props.qn].q}</h4>
+              <div className="ques tc pl2 f3  ">
+                <h4 className="mt0 pt3 dark-gray mb3">
+                  {Questions[this.props.qn].q}
+                </h4>
               </div>
 
               {/*Display checkBox */}
@@ -86,9 +85,14 @@ class QuestionCard extends Component {
               {/*Display result (p tag) if ans is right} */}
               <div className="disp-ans flex">
                 {this.state.isright ? (
-                  <p className="f5 dark-gray ml2">Right Answer</p>
+                  <div className=" dark-gray mt3 flex ml2">
+                    <img className="tick" alt="imG" src={icon} />
+                    <p className="f5 mt1 mb0 ">Right Answer</p>
+                  </div>
                 ) : (
-                  <p className="f5 tc dark-gray ml2">Select a Option and click submit</p>
+                  <p className="f5 tc dark-gray ml2">
+                    Select a Option and click submit
+                  </p>
                 )}
               </div>
 
@@ -96,21 +100,21 @@ class QuestionCard extends Component {
               <div className="form-group flex justify-around mt2">
                 <button
                   onClick={this.props.onPrev}
-                  className="w3 h2 f6 bn bg-silver ma1  white"
+                  className="w3 h2 f6 bn bg-mid-gray ma1  white"
                 >
                   Previous
                 </button>
 
                 <button
                   type="submit"
-                  className="w3 h2 f6 bn bg-silver ma1  white"
+                  className="w3 h2 f6 bn bg-mid-gray ma1  white"
                 >
                   Submit
                 </button>
 
                 <button
                   onClick={this.props.onNext}
-                  className="w3 h2 f6 bn bg-silver ma1  white"
+                  className="w3 h2 f6 bn bg-mid-gray ma1  white"
                 >
                   Next
                 </button>

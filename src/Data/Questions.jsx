@@ -1,7 +1,7 @@
 export const Questions = [
     {
         q : "What is the capital of India",
-        op: ["Mumbai" , "Delhi" , "Kolkata" , "Gujrat"] 
+        op: ["Mumbai" , "Delhi" , "Kolkata " , "Gujrat"] 
     }
     ,
     {

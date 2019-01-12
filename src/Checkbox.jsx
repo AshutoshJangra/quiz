@@ -2,7 +2,7 @@ import React from "react";
 
 const Checkbox = ({ label, isSelected, onCheckboxChange }) => {
   return (
-    <div className="flex  f4 pa2">
+    <div className="flex dark-gray f4 pa2">
       <label>
         <input
           type="checkbox"
@@ -18,3 +18,4 @@ const Checkbox = ({ label, isSelected, onCheckboxChange }) => {
 };
 
 export default Checkbox;
+ 
