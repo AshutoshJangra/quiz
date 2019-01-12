@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
 import QuestionCard from "./QuestionCard";
-import { Questions } from "./Data/Questions";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      questions: Questions,
       qn: 0
     };
   }
@@ -21,7 +19,7 @@ class App extends Component {
     }
   };
 
- //function for next prev button (decrease qn in state)
+  //function for next prev button (decrease qn in state)
   prevQuestion = () => {
     let qn = this.state.qn;
 
@@ -30,22 +28,16 @@ class App extends Component {
     }
   };
 
-  //onsubmit func check ans in answer files
-  submitAnswer = (event) => {
-         console.log(event + "check") 
-        
-  }
-
   render() {
     return (
       <div className="App   ">
-        <div className="">
+        <div className="card-space">
+        </div>
+        <div className="card shadow-5 bg-white flex tc  ma3 mt0">
           <QuestionCard
-            questions={this.state.questions}
             qn={this.state.qn}
             onNext={this.nextQuestion}
             onPrev={this.prevQuestion}
-            Submit = {this.submitAnswer}
           />
         </div>
       </div>
