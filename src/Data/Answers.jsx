@@ -1,4 +1,5 @@
 export const Answers = [
-    "Delhi" ,
-    "Washington D.C"
+    "Input Unit" ,
+    "4",
+    "none of the mentioned"
 ]

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Checkbox from "./Checkbox";
-import './App.css';
+import "./App.css";
 import { Questions } from "./Data/Questions";
 import { Answers } from "./Data/Answers";
 import icon from "./icons8-ok-30.png";
@@ -39,19 +39,13 @@ class QuestionCard extends Component {
       .filter(checkbox => this.state.checkboxes[checkbox])
       .forEach(checkbox => {
         //check if ans is right
-        if (checkbox === null) {
-          console.log("sdds");
-        }
         if (checkbox === Answers[this.props.qn]) {
           this.setState({ isright: true });
+          this.props.onCorrect();
         } else {
-          console.log("Answer is wrong");
-
           this.setState({ isright: false });
         }
       });
-
-    //set the state to default false
   };
 
   //creating the checkbox
@@ -73,7 +67,7 @@ class QuestionCard extends Component {
           <div className="col-sm-12">
             <form onSubmit={this.handleFormSubmit}>
               {/*display questions */}
-              <div className="ques tc pl2 f3  ">
+              <div className="ques tc pl2 f4  ">
                 <h4 className="mt0 pt3 dark-gray mb3">
                   {Questions[this.props.qn].q}
                 </h4>
@@ -98,13 +92,19 @@ class QuestionCard extends Component {
 
               {/* display buttons */}
               <div className="form-group flex justify-around mt2">
-                <button
-                  onClick={this.props.onPrev}
-                  className="w3 h2 f6 bn bg-mid-gray ma1  white"
-                >
-                  Previous
-                </button>
-
+                {/*if first question hide prev button*/}
+                {this.props.qn === 0 ? (
+                  <button className="w3 h2 f6 bn bg-gray ma1  white">
+                    Previous
+                  </button>
+                ) : (
+                  <button
+                    onClick={this.props.onPrev}
+                    className="w3 h2 f6 bn bg-mid-gray ma1  white"
+                  >
+                    Previous
+                  </button>
+                )}
                 <button
                   type="submit"
                   className="w3 h2 f6 bn bg-mid-gray ma1  white"
@@ -112,12 +112,19 @@ class QuestionCard extends Component {
                   Submit
                 </button>
 
-                <button
-                  onClick={this.props.onNext}
-                  className="w3 h2 f6 bn bg-mid-gray ma1  white"
-                >
-                  Next
-                </button>
+                {/*if last question hide next button*/}
+                {this.props.qn === 5 ? (
+                  <button className="w3 h2 f6 bn bg-gray ma1  white">
+                    Next
+                  </button>
+                ) : (
+                  <button
+                    onClick={this.props.onNext}
+                    className="w3 h2 f6 bn bg-mid-gray ma1  white"
+                  >
+                    Next
+                  </button>
+                )}
               </div>
             </form>
           </div>
